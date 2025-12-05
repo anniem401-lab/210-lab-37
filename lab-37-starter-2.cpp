@@ -10,19 +10,30 @@ int sum_ascii(string s);
 int main() {
     /*
     char a = 'A';
-    cout << a << endl; // ASCII: 65
-    cout << (int) a << endl;
+    cout << a << endl; 
+    cout << (int) a << endl; // Prints ASCII: 65
     int b = 66; // ASCII
     cout << b << endl;
     cout << (char) b << endl;
     */
-    cout << "\nReading string...\n"; 
     string code = "Test";
+    cout << "\nReading string " << code << "...\n" << endl; 
 
     sum_ascii(code);
 
     int result = sum_ascii(code);
     cout << "Sum of string's ASCII values: " << result << endl;
+
+    cout << "\nChecking the ASCII values...\n";
+    char T = 'T'; // Char holds a letter
+    cout << T << ": " << (int) T << endl; // Prints ASCII of T: 84
+    char e = 'e';
+    cout << e << ": " << (int) e << endl; // Prints ASCII of e: 101
+    char s = 's';
+    cout << s << ": " << (int) s << endl; // Prints ASCII of s: 115
+    char t = 't';
+    cout << t << ": " << (int) t << endl; // Prints ASCII of t: 116
+
     return 0;
 }
 
