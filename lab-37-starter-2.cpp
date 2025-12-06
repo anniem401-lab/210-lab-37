@@ -21,23 +21,37 @@ int main() {
 
     // Checking file
     ifstream fin;
-    //fin.open(); // Opens the file
-    if (fin.good()) {
-        string codes;
+    fin.open("lab-37-data-2.txt"); // Opens file containing 100,185 12-character strings of hexadecimalcodes
+    if (!fin.good()) throw "I/O error";
 
-        while (fin >> codes) {
-            
-        }
+    /*
+    while (fin.good()) { // Loop to read lines until eof
+        string codes;
+        getline(fin, codes);
+        cout << codes << endl;
+    }
+    */
+
+    int codeTotal = 0;
+    int i; // loop counter
+    for (i = 0; i < 100,185; i++) {
+        string aCode;
+        getline(fin, aCode);
+        codeTotal = codeTotal
     }
 
-    string code = "Test";
-    cout << "\nReading string " << code << "...\n" << endl; 
+    fin.close(); // Closes file
 
-    sum_ascii(code);
+    cout << "Codes have been read from file!\n" << endl;
 
-    int result = sum_ascii(code);
-    cout << "Sum of ASCII values of string " << code << ": " << result << endl;
+    /*
+    sum_ascii(codes);
 
+    int result = sum_ascii(codes);
+    cout << "Sum of ASCII values of string " << codes << ": " << result << endl;
+    */
+
+    /*
     cout << "\nChecking the ASCII values of each character and calculating total...\n";
     char T = 'T'; // Char holds a letter
     cout << T << ": " << (int) T << endl; // Prints ASCII of T: 84
@@ -50,6 +64,7 @@ int main() {
 
     int total = ((int) T + (int) e + (int) s + (int) t);
     cout << "\nTotal of all character ASCII values: " << total << endl;
+    */
     cout << "Part One done: Milestone 1.";
 
     return 0;
