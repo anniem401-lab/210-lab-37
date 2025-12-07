@@ -4,12 +4,18 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
 // Function prototype
-int sum_ascii(string s);
+int gen_hash_index();
+
+const int Map_Entries = 100;
 
 int main() {
+    map<int, list<string>> hash_table; // map where int is hash index and list is code string
+
     cout << "\nReading file and calculating ASCII values...\n";
     // Checking file
     ifstream fin;
@@ -19,22 +25,27 @@ int main() {
     int sum = 0;
     string code;
     while (getline(fin, code)) { // Loop to read lines until eof
-        sum += sum_ascii(code);
+        //sum += sum_ascii(code);
     }
     fin.close(); // Closes file
 
-    cout << "Sum of ASCII values of string: " << sum << endl;
+    // Acessing map using range-based for loop
+    cout << "Hash index and string code (range-based for loop): " << endl;
+    for (auto pair : hash_table) {
+        cout << pair.first << ": ";
+        for (auto code : pair.second)
+            cout << code << " ";        
+        cout << endl;
+    }
+
+    //cout << "Sum of ASCII values of string: " << sum << endl;
     cout << "\nPart One done: Milestone 1.\n";
     cout << "Part Two done: Milestone 2.";
     return 0;
 }
 
-int sum_ascii(string s) {
-    int sum = 0;
-    for (int i = 0; i < s.length(); i++) {
-        sum = sum + s[i]; // ASCII value is calculated
-    }
-    return sum; // Total is returned
+int gen_hash_index() {
+    
 }
 
 /* 
