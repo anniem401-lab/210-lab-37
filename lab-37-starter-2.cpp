@@ -9,7 +9,7 @@
 using namespace std;
 
 // Function prototype
-int gen_hash_index();
+int gen_hash_index(string s);
 
 const int Map_Entries = 100;
 
@@ -22,20 +22,23 @@ int main() {
     fin.open("lab-37-data-2.txt"); // Opens file containing 100,185 12-character strings of hexadecimalcodes
     if (!fin.good()) throw "I/O error";
 
-    int sum = 0;
     string code;
     while (getline(fin, code)) { // Loop to read lines until eof
-        //sum += sum_ascii(code);
+        int index = gen_hash_index(code);
+        hash_table[index].push_back(code);
     }
     fin.close(); // Closes file
 
     // Acessing map using range-based for loop
     cout << "Hash index and string code (range-based for loop): " << endl;
-    for (auto pair : hash_table) {
-        cout << pair.first << ": ";
-        for (auto code : pair.second)
-            cout << code << " ";        
-        cout << endl;
+    int codes = 0;
+    for (auto &pair : hash_table) {
+        if ( codes >= Map_Entries) break;
+        cout << pair.first << " ";
+        for (auto codes : pair.second)
+            cout << codes << " \n";
+            cout << endl;        
+            codes++;
     }
 
     //cout << "Sum of ASCII values of string: " << sum << endl;
@@ -44,8 +47,12 @@ int main() {
     return 0;
 }
 
-int gen_hash_index() {
-    
+int gen_hash_index(string s) {
+    int sum = 0;
+    for (int i = 0; i < s.length(); i++) {
+        sum += s[i];
+    }
+    return sum;
 }
 
 /* 
