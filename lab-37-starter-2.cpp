@@ -16,7 +16,6 @@ const int Map_Entries = 100;
 int main() {
     map<int, list<string>> hash_table; // map where int is hash index and list is code string
 
-    cout << "\nReading file and calculating ASCII values...\n";
     // Checking file
     ifstream fin;
     fin.open("lab-37-data-2.txt"); // Opens file containing 100,185 12-character strings of hexadecimalcodes
@@ -30,16 +29,21 @@ int main() {
     fin.close(); // Closes file
 
     // Acessing map using range-based for loop
-    cout << "Hash index and string code (range-based for loop): " << endl;
     int codes = 0;
     for (auto &pair : hash_table) {
         if ( codes >= Map_Entries) break;
-        cout << pair.first << " ";
-        for (auto codes : pair.second)
-            cout << codes << " \n";
-            cout << endl;        
-            codes++;
+        
+        cout << "Hash Index: " << pair.first << " - ";
+
+        for (auto &c : pair.second) {
+            cout << endl;
+            cout << "Codes: (" << c << ")";
+        }
+        cout << endl;
+        codes++;
     }
+    
+    // last output: 956F69A6F889
 
     //cout << "Sum of ASCII values of string: " << sum << endl;
     cout << "\nPart One done: Milestone 1.\n";
@@ -47,6 +51,9 @@ int main() {
     return 0;
 }
 
+// gen_hash_index receives string codes and return their ASCII values
+// arguments: string
+// returns: sum
 int gen_hash_index(string s) {
     int sum = 0;
     for (int i = 0; i < s.length(); i++) {
