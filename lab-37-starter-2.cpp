@@ -29,25 +29,20 @@ int main() {
     fin.close(); // Closes file
 
     // Acessing map using range-based for loop
-    int codes = 0;
+    int codesPrinted = 0;
     for (auto &pair : hash_table) {
-        if ( codes >= Map_Entries) break;
+        if ( codesPrinted >= Map_Entries) break;
         
-        cout << "Hash Index: " << pair.first << " - ";
-
+        cout << "# " << codesPrinted + 1 << "| Hash Index " << pair.first << "\n";
+        cout << "Codes: ";
+        cout << "\n----- ";
         for (auto &c : pair.second) {
-            cout << endl;
-            cout << "Codes: (" << c << ")";
+            cout << "(" << c << ") ";
         }
-        cout << endl;
-        codes++;
-    }
-    
-    // last output: 956F69A6F889
+        cout << "\n\n=====================*\n";
 
-    //cout << "Sum of ASCII values of string: " << sum << endl;
-    cout << "\nPart One done: Milestone 1.\n";
-    cout << "Part Two done: Milestone 2.";
+        codesPrinted++;
+    }
     return 0;
 }
 
@@ -61,11 +56,3 @@ int gen_hash_index(string s) {
     }
     return sum;
 }
-
-/* 
-These targets are present in the dataset and can be used for testing:
-536B9DFC93AF
-1DA9D64D02A0
-666D109AA22E
-E1D2665B21EA
-*/
